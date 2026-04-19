@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Farmacia Giuliana Farina — Roccaspinalveti</title>
+  <meta name="description" content="Farmacia Giuliana Farina a Roccaspinalveti (CH). Servizi di telemedicina, misurazione pressione, dermocosmetica, preparazioni galeniche e molto altro." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --green-deep: #1a4a3a;
+      --green-mid: #2d7a5f;
+      --green-light: #4aad85;
+      --green-pale: #e8f5f0;
+      --green-mist: #f2faf6;
+      --white: #ffffff;
+      --off-white: #fafbf9;
+      --ink: #111c18;
+      --ink-soft: #3d4f47;
+      --ink-muted: #7a9088;
+      --accent: #c8e6d8;
+      --gold: #d4a843;
+      --radius: 16px;
+      --radius-sm: 8px;
+      --shadow: 0 4px 32px rgba(26,74,58,0.10);
+      --shadow-card: 0 2px 16px rgba(26,74,58,0.08);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--off-white);
+      color: var(--ink);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── TOP HEADER ── */
+    .top-header {
+      background: var(--green-deep);
+      padding: 18px 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      position: relative;
+      z-index: 101;
+    }
+    .top-header-logo {
+      width: 56px; height: 56px;
+      background: white;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px; font-weight: 700;
+      color: var(--green-deep);
+      flex-shrink: 0;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    }
+    /* Quando hai il logo: sostituisci .top-header-logo con <img src="logo.png" style="height:56px;"> */
+    .top-header-text { text-align: center; }
+    .top-header-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.3rem, 3vw, 1.9rem);
+      color: white;
+      letter-spacing: 0.01em;
+      line-height: 1.2;
+    }
+    .top-header-sub {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw;
+      height: 70px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(74,173,133,0.15);
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: var(--shadow); }
+
+    .nav-brand {
+      display: flex; align-items: center; gap: 12px; text-decoration: none;
+    }
+    .nav-logo-placeholder {
+      width: 40px; height: 40px;
+      background: var(--green-deep);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 18px; font-weight: 700;
+      font-family: 'DM Serif Display', serif;
+      flex-shrink: 0;
+    }
+    /* When you have your logo, replace .nav-logo-placeholder with:
+       <img src="logo.png" alt="Logo" style="height:40px;"> */
+    .nav-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
+      color: var(--green-deep);
+      line-height: 1.2;
+    }
+    .nav-name span { display: block; font-family: 'DM Sans', sans-serif; font-size: 0.72rem; color: var(--ink-muted); font-weight: 400; }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--ink-soft);
+      font-size: 0.88rem; font-weight: 500; letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--green-mid); }
+
+    .nav-cta {
+      background: var(--green-deep); color: white;
+      padding: 9px 22px; border-radius: 50px;
+      text-decoration: none; font-size: 0.85rem; font-weight: 500;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: var(--green-mid); transform: translateY(-1px); }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { width: 24px; height: 2px; background: var(--ink); border-radius: 2px; transition: 0.3s; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 60px 5vw 60px;
+      position: relative;
+      overflow: hidden;
+      background: var(--green-mist);
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -80px; right: -80px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(74,173,133,0.18) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: -120px; left: -60px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(26,74,58,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1200px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+    }
+
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: white; border: 1px solid var(--accent);
+      color: var(--green-mid); font-size: 0.78rem; font-weight: 500;
+      padding: 6px 14px; border-radius: 50px; margin-bottom: 28px;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      animation: fadeUp 0.7s ease both;
+    }
+    .hero-tag::before { content: '●'; color: var(--green-light); font-size: 8px; }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      line-height: 1.12;
+      color: var(--green-deep);
+      margin-bottom: 24px;
+      animation: fadeUp 0.7s 0.1s ease both;
+    }
+    .hero h1 em { font-style: italic; color: var(--green-mid); }
+
+    .hero p {
+      font-size: 1.05rem; color: var(--ink-soft);
+      line-height: 1.75; max-width: 460px;
+      margin-bottom: 40px;
+      animation: fadeUp 0.7s 0.2s ease both;
+    }
+
+    .hero-actions {
+      display: flex; gap: 16px; flex-wrap: wrap;
+      animation: fadeUp 0.7s 0.3s ease both;
+    }
+    .btn-primary {
+      background: var(--green-deep); color: white;
+      padding: 14px 30px; border-radius: 50px;
+      text-decoration: none; font-size: 0.92rem; font-weight: 500;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(26,74,58,0.25);
+    }
+    .btn-primary:hover { background: var(--green-mid); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(26,74,58,0.3); }
+
+    .btn-ghost {
+      background: transparent; color: var(--green-deep);
+      padding: 14px 30px; border-radius: 50px;
+      text-decoration: none; font-size: 0.92rem; font-weight: 500;
+      border: 1.5px solid var(--green-deep);
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-ghost:hover { background: var(--green-pale); transform: translateY(-2px); }
+
+    .hero-visual {
+      position: relative;
+      animation: fadeIn 0.9s 0.2s ease both;
+    }
+    .hero-img-wrap {
+      border-radius: 24px; overflow: hidden;
+      box-shadow: 0 24px 64px rgba(26,74,58,0.20);
+      aspect-ratio: 4/3;
+      background: var(--green-pale);
+    }
+    .hero-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+      display: block;
+    }
+    .hero-badge {
+      position: absolute; bottom: -20px; left: -24px;
+      background: white; border-radius: 16px;
+      padding: 16px 22px;
+      box-shadow: var(--shadow);
+      display: flex; align-items: center; gap: 14px;
+    }
+    .hero-badge-icon { font-size: 2rem; }
+    .hero-badge-text { font-size: 0.78rem; color: var(--ink-muted); line-height: 1.4; }
+    .hero-badge-text strong { display: block; color: var(--ink); font-size: 0.9rem; }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 90px 5vw; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--green-light);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      color: var(--green-deep);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .section-subtitle {
+      font-size: 1rem; color: var(--ink-soft); max-width: 560px; line-height: 1.75;
+      margin-bottom: 56px;
+    }
+
+    /* ── SERVICES ── */
+    #servizi { background: var(--white); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--off-white);
+      border: 1px solid rgba(74,173,133,0.15);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--green-mid), var(--green-light));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--green-light); }
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-icon {
+      width: 52px; height: 52px;
+      background: var(--green-pale);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+    .service-card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem; color: var(--green-deep);
+      margin-bottom: 10px;
+    }
+    .service-card p { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.65; }
+
+    /* ── TELEMEDICINA HIGHLIGHT ── */
+    .tele-highlight {
+      margin-top: 36px;
+      background: var(--green-deep);
+      border-radius: 24px;
+      padding: 44px 48px;
+      color: white;
+      display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center;
+    }
+    .tele-highlight h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.6rem; margin-bottom: 12px; color: white;
+    }
+    .tele-highlight p { font-size: 0.92rem; color: rgba(255,255,255,0.75); line-height: 1.7; max-width: 540px; }
+    .tele-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .tele-badge {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: white; font-size: 0.8rem;
+      padding: 6px 14px; border-radius: 50px;
+    }
+    .tele-cta {
+      background: var(--gold); color: var(--ink);
+      padding: 14px 28px; border-radius: 50px;
+      text-decoration: none; font-weight: 600; font-size: 0.9rem;
+      white-space: nowrap;
+      transition: opacity 0.2s, transform 0.15s;
+      flex-shrink: 0;
+    }
+    .tele-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    /* ── NEWS ── */
+    #news { background: var(--green-mist); }
+
+    .news-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .news-card {
+      background: white; border-radius: var(--radius);
+      overflow: hidden; box-shadow: var(--shadow-card);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .news-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .news-img {
+      height: 180px; background: var(--green-pale);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem; overflow: hidden;
+    }
+    .news-img img { width: 100%; height: 100%; object-fit: cover; }
+    .news-body { padding: 24px 24px 28px; }
+    .news-tag {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--green-light);
+      margin-bottom: 8px;
+    }
+    .news-card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem; color: var(--green-deep);
+      margin-bottom: 10px; line-height: 1.35;
+    }
+    .news-card p { font-size: 0.86rem; color: var(--ink-soft); line-height: 1.65; }
+
+    /* ── ORARI & CONTATTI ── */
+    #contatti { background: var(--white); }
+
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;
+    }
+
+    .hours-table { width: 100%; border-collapse: collapse; }
+    .hours-table tr { border-bottom: 1px solid rgba(74,173,133,0.15); }
+    .hours-table tr:last-child { border-bottom: none; }
+    .hours-table td { padding: 12px 0; font-size: 0.92rem; }
+    .hours-table td:first-child { color: var(--ink-soft); font-weight: 500; }
+    .hours-table td:last-child { color: var(--green-deep); text-align: right; font-weight: 500; }
+    .closed { color: #d0403a !important; }
+
+    .contact-info { margin-top: 36px; display: flex; flex-direction: column; gap: 16px; }
+    .contact-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      background: var(--green-mist); border-radius: var(--radius-sm);
+      padding: 16px 20px;
+    }
+    .contact-item-icon {
+      width: 38px; height: 38px; flex-shrink: 0;
+      background: var(--green-pale); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+    }
+    .contact-item-body { font-size: 0.88rem; }
+    .contact-item-body strong { display: block; color: var(--green-deep); margin-bottom: 2px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; }
+    .contact-item-body a { color: var(--ink-soft); text-decoration: none; }
+    .contact-item-body a:hover { color: var(--green-mid); text-decoration: underline; }
+
+    /* ── MAPPA ── */
+    #mappa { background: var(--green-mist); padding-top: 0; }
+    .map-wrap {
+      border-radius: 24px; overflow: hidden;
+      box-shadow: var(--shadow);
+      height: 400px;
+    }
+    .map-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--green-deep); color: rgba(255,255,255,0.7);
+      padding: 48px 5vw 32px;
+    }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 24px;
+    }
+    .footer-brand {
+      font-family: 'DM Serif Display', serif;
+      color: white; font-size: 1.1rem;
+    }
+    .footer-brand span { display: block; font-family: 'DM Sans', sans-serif; font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-top: 4px; }
+    .footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
+    .footer-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-links a:hover { color: white; }
+    .footer-copy { width: 100%; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; margin-top: 16px; font-size: 0.78rem; text-align: center; color: rgba(255,255,255,0.35); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; } to { opacity: 1; }
+    }
+
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+
+      .nav-mobile-open .nav-links {
+        display: flex; flex-direction: column;
+        position: fixed; top: 70px; left: 0; right: 0;
+        background: white; padding: 24px 5vw 32px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        gap: 1rem;
+      }
+      .nav-mobile-open .nav-links a { font-size: 1rem; }
+
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-visual { order: -1; }
+      .hero-badge { bottom: -10px; left: 10px; }
+
+      .contact-grid { grid-template-columns: 1fr; }
+      .tele-highlight { grid-template-columns: 1fr; }
+      .tele-cta { align-self: flex-start; }
+    }
+
+    @media (max-width: 600px) {
+      section { padding: 64px 5vw; }
+      .tele-highlight { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP HEADER -->
+  <header class="top-header">
+    <div class="top-header-logo">F</div>
+    <!-- Sostituisci il div sopra con: <img src="logo.png" alt="Logo" style="height:56px;border-radius:50%;background:white;"> -->
+    <div class="top-header-text">
+      <div class="top-header-name">Farmacia Giuliana Farina</div>
+      <div class="top-header-sub">Roccaspinalveti (CH)</div>
+    </div>
+  </header>
+
+  <!-- NAV -->
+  <nav id="mainNav">
+    <a class="nav-brand" href="#">
+      <div class="nav-logo-placeholder">F</div>
+      <!-- Sostituisci il div sopra con: <img src="logo.png" alt="Logo Farmacia" style="height:40px;"> -->
+      <div class="nav-name">
+        Farmacia Giuliana Farina
+        <span>Roccaspinalveti (CH)</span>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#servizi">Servizi</a></li>
+      <li><a href="#news">News & Offerte</a></li>
+      <li><a href="#contatti">Orari & Contatti</a></li>
+      <li><a href="#mappa">Come raggiungerci</a></li>
+    </ul>
+    <a class="nav-cta" href="mailto:info@farmaciafarina.it">Contattaci</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-tag">Roccaspinalveti — Chieti</div>
+        <h1>La tua salute,<br><em>la nostra passione</em></h1>
+        <p>
+          Farmacia Giuliana Farina: un punto di riferimento per la salute e il benessere
+          della comunità di Roccaspinalveti. Servizi professionali, consulenza personalizzata
+          e tecnologie di telemedicina avanzata.
+        </p>
+        <div class="hero-actions">
+          <a href="#servizi" class="btn-primary">Scopri i Servizi</a>
+          <a href="#contatti" class="btn-ghost">Orari & Contatti</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-img-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1576602976047-174e57a47881?w=800&q=80"
+            alt="Farmacia professionale"
+          />
+        </div>
+        <div class="hero-badge">
+          <div class="hero-badge-icon">🩺</div>
+          <div class="hero-badge-text">
+            <strong>Telemedicina HTN</strong>
+            Referti online da cardiologi
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIZI -->
+  <section id="servizi">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-label">Cosa offriamo</span>
+        <h2 class="section-title">I nostri servizi</h2>
+        <p class="section-subtitle">
+          Dalla consulenza farmaceutica ai servizi diagnostici avanzati: tutto ciò di cui hai bisogno per la tua salute, vicino a casa.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon">🩸</div>
+          <h3>Misurazione della Pressione</h3>
+          <p>Controllo della pressione arteriosa rapido e accurato, con consulenza personalizzata sui valori rilevati.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">🦽</div>
+          <h3>Noleggio Attrezzature Sanitarie</h3>
+          <p>Stampelle, sedie a rotelle, deambulatori e altri presidi ortopedici disponibili a noleggio.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">⚗️</div>
+          <h3>Preparazioni Galeniche</h3>
+          <p>Preparazione di farmaci personalizzati su prescrizione medica, realizzati con precisione nel nostro laboratorio.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">💆</div>
+          <h3>Dermocosmetica & Consulenza Beauty</h3>
+          <p>Consulenza professionale per la cura della pelle, selezione di prodotti dermatologici e cosmetici di alta qualità.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">🌿</div>
+          <h3>Omeopatia & Fitoterapia</h3>
+          <p>Ampia selezione di rimedi omeopatici e fitoterapici con consulenza dedicata per un approccio naturale alla salute.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">💊</div>
+          <h3>Parafarmacia & Integratori</h3>
+          <p>Prodotti per il benessere, integratori alimentari e articoli para-farmaceutici selezionati con cura.</p>
+        </div>
+      </div>
+
+      <!-- TELEMEDICINA HIGHLIGHT -->
+      <div class="tele-highlight reveal">
+        <div>
+          <h3>🫀 Telemedicina HTN — Cardiologia Digitale</h3>
+          <p>
+            Offriamo servizi di diagnostica cardiologica avanzata con refertazione online da parte di cardiologi specializzati.
+            Prenota direttamente in farmacia, esegui l'esame in autonomia e ricevi il referto digitale.
+          </p>
+          <div class="tele-badges">
+            <span class="tele-badge">Holter Pressorio 24h</span>
+            <span class="tele-badge">Holter Pressorio 48h</span>
+            <span class="tele-badge">Holter Cardiaco 24h</span>
+            <span class="tele-badge">Holter Cardiaco 48h</span>
+            <span class="tele-badge">ECG</span>
+            <span class="tele-badge">Referto Online</span>
+          </div>
+        </div>
+        <a href="mailto:info@farmaciafarina.it?subject=Prenotazione Telemedicina HTN" class="tele-cta">
+          Prenota ora →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWS & OFFERTE -->
+  <section id="news">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-label">Aggiornamenti</span>
+        <h2 class="section-title">News & Offerte</h2>
+        <p class="section-subtitle">Resta aggiornato sulle promozioni, le novità e i consigli per la tua salute.</p>
+      </div>
+
+      <div class="news-grid">
+        <div class="news-card reveal">
+          <div class="news-img">
+            <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&q=80" alt="Offerta cosmetica" />
+          </div>
+          <div class="news-body">
+            <div class="news-tag">🌸 Offerta Maggio</div>
+            <h3>Promozione Dermocosmetica Primaverile</h3>
+            <p>Scopri le nostre offerte speciali sui prodotti per la cura del viso e del corpo. Vieni in farmacia per i dettagli.</p>
+          </div>
+        </div>
+        <div class="news-card reveal">
+          <div class="news-img">
+            <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&q=80" alt="Telemedicina" />
+          </div>
+          <div class="news-body">
+            <div class="news-tag">🫀 Novità</div>
+            <h3>Holter Pressorio e Cardiaco con referto digitale</h3>
+            <p>Ora disponibile il servizio di Telemedicina HTN. Prenota il tuo esame direttamente in farmacia. Referto online in 24-48h.</p>
+          </div>
+        </div>
+        <div class="news-card reveal">
+          <div class="news-img">
+            <img src="https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=600&q=80" alt="Integratori" />
+          </div>
+          <div class="news-body">
+            <div class="news-tag">💡 Consiglio salute</div>
+            <h3>Integratori per la stagione calda</h3>
+            <p>Con l'arrivo del caldo è importante reintegrare sali minerali e vitamine. Chiedi consiglio al nostro farmacista.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORARI & CONTATTI -->
+  <section id="contatti">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-label">Siamo qui per te</span>
+        <h2 class="section-title">Orari & Contatti</h2>
+        <p class="section-subtitle">Vieni a trovarci o contattaci per qualsiasi informazione o prenotazione.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="reveal">
+          <h3 style="font-family:'DM Serif Display',serif; color:var(--green-deep); font-size:1.3rem; margin-bottom:20px;">Orari di apertura</h3>
+          <table class="hours-table">
+            <tr><td>Lunedì</td><td>9:00 – 13:00 &nbsp;/&nbsp; 16:30 – 19:30</td></tr>
+            <tr><td>Martedì</td><td>9:00 – 13:00 &nbsp;/&nbsp; 16:30 – 19:30</td></tr>
+            <tr><td>Mercoledì</td><td>9:00 – 13:00 &nbsp;/&nbsp; 16:30 – 19:30</td></tr>
+            <tr><td>Giovedì</td><td>9:00 – 13:00 &nbsp;/&nbsp; 16:30 – 19:30</td></tr>
+            <tr><td>Venerdì</td><td>9:00 – 13:00 &nbsp;/&nbsp; 16:30 – 19:30</td></tr>
+            <tr><td>Sabato</td><td>9:00 – 13:00</td></tr>
+            <tr><td>Domenica</td><td class="closed">Chiuso</td></tr>
+          </table>
+        </div>
+
+        <div class="reveal">
+          <h3 style="font-family:'DM Serif Display',serif; color:var(--green-deep); font-size:1.3rem; margin-bottom:20px;">Contatti & Prenotazioni</h3>
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-item-icon">📍</div>
+              <div class="contact-item-body">
+                <strong>Indirizzo</strong>
+                Via [inserire via], Roccaspinalveti (CH) — 66050
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">📞</div>
+              <div class="contact-item-body">
+                <strong>Telefono</strong>
+                <a href="tel:+390000000000">0000 000 000</a>
+                <!-- Sostituisci con il numero reale -->
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">✉️</div>
+              <div class="contact-item-body">
+                <strong>Email</strong>
+                <a href="mailto:info@farmaciafarina.it">info@farmaciafarina.it</a>
+                <!-- Sostituisci con l'email reale -->
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">🫀</div>
+              <div class="contact-item-body">
+                <strong>Prenotazioni Telemedicina HTN</strong>
+                <a href="mailto:info@farmaciafarina.it?subject=Prenotazione Telemedicina">Scrivi per prenotare →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAPPA -->
+  <section id="mappa" style="padding-top:0; padding-bottom:90px;">
+    <div class="section-inner">
+      <div class="reveal" style="margin-bottom:28px;">
+        <span class="section-label">Dove siamo</span>
+        <h2 class="section-title">Come raggiungerci</h2>
+      </div>
+      <div class="map-wrap reveal">
+        <iframe
+          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY&q=Roccaspinalveti,CH,Italia"
+          allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        Farmacia Giuliana Farina
+        <span>Roccaspinalveti (CH) — P.IVA: [inserire P.IVA]</span>
+      </div>
+      <nav class="footer-links">
+        <a href="#servizi">Servizi</a>
+        <a href="#news">News</a>
+        <a href="#contatti">Contatti</a>
+        <a href="#mappa">Mappa</a>
+      </nav>
+    </div>
+    <div class="section-inner">
+      <p class="footer-copy">
+        © 2025 Farmacia Giuliana Farina — Tutti i diritti riservati.
+        &nbsp;|&nbsp; Sito realizzato con ❤️
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll effect
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    hamburger.addEventListener('click', () => {
+      nav.classList.toggle('nav-mobile-open');
+    });
+    document.querySelectorAll('#navLinks a').forEach(a => {
+      a.addEventListener('click', () => nav.classList.remove('nav-mobile-open'));
+    });
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
